@@ -18,13 +18,13 @@ function MoviePage() {
 
     return (
         <>
-        <form onSubmit={onHandleSubmit}>
-            <button 
+        <SearchForm onSubmit={onHandleSubmit}>
+            <SearchButton 
             type="submit">
                 <span>Search for movies</span>
-            </button>
+            </SearchButton>
 
-            <input
+            <SearhInput
             type="text"
             name="search"
             value={value}
@@ -33,16 +33,17 @@ function MoviePage() {
             placeholder="Search movies"
             onChange={onHandleInput}
             />
-            </form>
-            <ul>
-                {movies.map(movie => {
-                    <li key={movie.id}>
-                        <Link to={`${movie.id}`}>
-                            {movie.title}
-                        </Link>
-                    </li>
-                })}
-            </ul>
+        </SearchForm>
+        <MoviesList>
+            {movies.map(movie => {
+                <MovieItem key={movie.id}>
+                    <MovieLink to={`${movie.id}`}>
+                        {movie.title}
+                    </MovieLink>
+                </MovieItem>
+            })}
+        </MoviesList>
+
         </>
     );
 }

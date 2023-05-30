@@ -7,23 +7,23 @@ function HomePage() {
     const [movies, setTitles] = useState([]);
 
     useEffect(() => {
-        async function fetchAppTitles() {
+        async function fetchTrendingMovies() {
             const result = await fetchTitles();
             setTitles(result);
         }
-        fetchAppTitles();
+        fetchTrendingMovies();
     }, []);
 
     return (
-        <ul>
+        <TrendingMovies>
             {movies.map(movie => {
-                <li key={movie.id}>
+                <MovieItem key={movie.id}>
                     <Link to={`movies/${movie.id}`}>
                         {movie.title}
                     </Link>
-                </li>
+                </MovieItem>
             })}
-        </ul>
+        </TrendingMovies>
     );
 }
 export default HomePage;

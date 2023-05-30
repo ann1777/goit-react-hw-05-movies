@@ -6,7 +6,6 @@ export const PageNav = styled.nav`
     border-bottom: 1px solid black;
   `
 export const NavLink = styled.link`
-    /* color: tomato; */
     text-decoration: none;
     margin-right: 10px;
 
@@ -14,5 +13,9 @@ export const NavLink = styled.link`
         color: tomato;
         text-decoration: none;
         margin-right: 10px;
+
+        &.visited {
+            color: inherit;
+        }
     }
   `
