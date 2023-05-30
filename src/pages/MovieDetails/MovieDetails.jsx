@@ -1,5 +1,5 @@
 import { fetchMovieDetails } from 'api/tmdb_api';
-import { useState, useParams, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 import {
   NavLink,
@@ -13,11 +13,11 @@ function MovieDetails() {
   const params = useParams();
 
   useEffect(() => {
-    async function fetchMovieDetails() {
+    async function fetchMvDetails() {
       const result = await fetchMovieDetails(params.id);
       setDetails(result);
     }
-    fetchMovieDetails();
+    fetchMvDetails();
   }, [params]);
 
   return (
@@ -39,7 +39,7 @@ function MovieDetails() {
           <h2>Overview</h2>
           <p>{details && details.overview}</p>
           <h3>Genres</h3>
-          <p>{details && details.genres.map(genre.name).join(', ')}</p>
+          <p>{details && details.genres.map(genre => genre.name).join(', ')}</p>
         </MovieDetailsSubWrapper>
         <div>
           <p>Additional information</p>

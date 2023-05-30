@@ -12,7 +12,7 @@ export const SearchButton = styled.button`
             background-color: aqua;
         }
 `
-export const SearhInput = styled.input`
+export const SearchInput = styled.input`
     border: 1px solid black;
     padding: 5px;
     margin-left: 10px;

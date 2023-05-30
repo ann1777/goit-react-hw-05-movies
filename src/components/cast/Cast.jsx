@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from 'api/tmdb_api';
+import { CastList, CastItem } from './Cast.styled';
 
 function Cast() {
   const [details, setDetails] = useState();

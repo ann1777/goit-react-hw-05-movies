@@ -1,6 +1,6 @@
 import { fetchMovies } from 'api/tmdb_api';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { SearchButton, SearchForm, SearchInput, MoviesList, MovieItem, MovieLink } from './MoviePage.styled';
 
 function MoviePage() {
     const [value, setInputValue] = useState('');
@@ -12,8 +12,15 @@ function MoviePage() {
 
     const onHandleSubmit = async e => {
         e.preventdefault();
-        const result = await fetchMovies(value);
-        setMovies(result);
+        try {
+            if (!value) {
+                throw new Error('Empty string is not allowed!');
+            }
+            const result = await fetchMovies(value.trim(''));
+            setMovies(result);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -24,7 +31,7 @@ function MoviePage() {
                 <span>Search for movies</span>
             </SearchButton>
 
-            <SearhInput
+            <SearchInput
             type="text"
             name="search"
             value={value}

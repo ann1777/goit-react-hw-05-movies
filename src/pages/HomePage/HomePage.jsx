@@ -1,6 +1,7 @@
 import { fetchTitles } from 'api/tmdb_api';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { TrendingMovies, MovieItem } from './HomePage.styled';
 
 
 function HomePage() {
