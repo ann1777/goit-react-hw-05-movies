@@ -1,5 +1,5 @@
 import { fetchMovieDetails } from 'api/tmdb_api';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, useLocation, Suspense } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 import {
   NavLink,
@@ -11,10 +11,11 @@ function MovieDetails() {
   const [details, setDetails] = useState();
 
   const params = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchMvDetails() {
-      const result = await fetchMovieDetails(params.id);
+      const result = await fetchMovieDetails(params.movieId);
       setDetails(result);
     }
     fetchMvDetails();
@@ -22,7 +23,12 @@ function MovieDetails() {
 
   return (
     <>
-      <NavLink to="/movies">Go back</NavLink>
+      <NavLink to={
+          location.state?.from
+            ? `/${location.state?.from?.pathname}${location.state?.from?.search}`
+            : '/movies'
+        }
+      >Go back</NavLink>
       <MovieDetailsWrapper>
         {' '}
         {details && (
@@ -33,7 +39,8 @@ function MovieDetails() {
         )}
         <MovieDetailsSubWrapper>
           <h1>
-            {details && details.title} ({details && details.release_date})
+            {details && details.title} 
+            ({details && details.release_date.slece(0, 4)})
           </h1>
           <p>Userscore: {details && details.vote_average}</p>
           <h2>Overview</h2>

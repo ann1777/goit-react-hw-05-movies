@@ -20,3 +20,6 @@ export const Link = styled.link`
         }
     }
 `
+export const Suspense = styled.div`
+    
+`

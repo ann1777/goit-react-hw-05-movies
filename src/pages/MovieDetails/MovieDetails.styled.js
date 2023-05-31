@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-export const TrendingMovies = styled.ul`
-    list-style: circle;
+export const Suspense = styled.div`
+    
 `
 
-export const MovieItem = styled.li`
-    margin-bottom: 10px;
-    font-size: 20px;
+export const Outlet = styled.div`
+   
 `
 
 export const NavLink = styled.link`
