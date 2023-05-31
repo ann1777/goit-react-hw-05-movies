@@ -17,18 +17,16 @@ function MoviePage() {
   const searchQuery = inputValue.get('name') ?? '';
   const location = useLocation();
 
-//   const onHandleInput = name => {
-//     const searchParams = name !== '' ? { name } : {};
-//     setInputValue(searchParams);
-//   };
-
-  const onHandleInput = e => {
-    e.preventdefault();
-    setInputValue({evt: e.target.evtName.value });
-    e.currentTarget.reset();
+  const onHandleInput = name => {
+    const searchParams = name !== '' ? { name } : {};
+    setInputValue(searchParams);
   };
 
-  const evtName = 
+//   const onHandleInput = e => {
+//     e.preventdefault();
+//     setInputValue({evt: e.target.evtName.value });
+//     e.currentTarget.reset();
+//   };
 
   useEffect(() => {
     async function fetching() {

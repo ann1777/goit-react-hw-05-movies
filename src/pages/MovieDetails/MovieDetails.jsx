@@ -2,7 +2,6 @@ import { fetchMovieDetails } from 'api/tmdb_api';
 import { useState, useEffect, useLocation, Suspense } from 'react';
 import { useParams, Outlet, NavLink } from 'react-router-dom';
 import {
-  // NavLink,
   MovieDetailsWrapper,
   MovieDetailsSubWrapper,
 } from './MovieDetails.styled';
@@ -14,25 +13,28 @@ function MovieDetails() {
   const location = useLocation();
 
   useEffect(() => {
-    try{
+    try {
       async function fetchMvDetails() {
-      const result = await fetchMovieDetails(params.movieId);
-      setDetails(result);
-    }
-    fetchMvDetails();
+        const result = await fetchMovieDetails(params.movieId);
+        setDetails(result);
+      }
+      fetchMvDetails();
     } catch (error) {
       console.log(error);
-    }  
+    }
   }, [params]);
 
   return (
     <>
-      <NavLink to={
+      <NavLink
+        to={
           location.state?.from
             ? `/${location.state?.from?.pathname}${location.state?.from?.search}`
             : '/movies'
         }
-      >Go back</NavLink>
+      >
+        Go back
+      </NavLink>
       <MovieDetailsWrapper>
         {' '}
         {details && (
@@ -43,8 +45,8 @@ function MovieDetails() {
         )}
         <MovieDetailsSubWrapper>
           <h1>
-            {details && details.title} 
-            ({details && details.release_date.slece(0, 4)})
+            {details && details.title}(
+            {details && details.release_date.slece(0, 4)})
           </h1>
           <p>Userscore: {details && details.vote_average}</p>
           <h2>Overview</h2>
@@ -56,10 +58,14 @@ function MovieDetails() {
           <p>Additional information</p>
           <ul>
             <li>
-              <NavLink to="cast" state={{ from: location.state?.from }}>Cast</NavLink>
+              <NavLink to="cast" state={{ from: location.state?.from }}>
+                Cast
+              </NavLink>
             </li>
             <li>
-              <NavLink to="Reviews" state={{ from: location.state?.from }}>Reviews</NavLink>
+              <NavLink to="Reviews" state={{ from: location.state?.from }}>
+                Reviews
+              </NavLink>
             </li>
           </ul>
         </div>

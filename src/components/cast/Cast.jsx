@@ -9,11 +9,15 @@ function Cast() {
   const params = useParams();
 
   useEffect(() => {
-    async function fetchMovie() {
+    try {
+      async function fetchMovie() {
       const result = await fetchMovieCast(params.id);
       setDetails(result);
     }
     fetchMovie();
+    } catch (error) {
+      console.log(error);
+    }
   }, [params]);
 
   return (

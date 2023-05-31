@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navigation from 'components/navigation/Navigation';
+import Navigation from './navigation/Navigation';
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const MoviePage = lazy(() => import('pages/MoviePage/MoviePage'));
 const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
@@ -10,7 +10,6 @@ const Reviews = lazy(() => import('components/reviews/Reviews'));
 export const App = () => {
   return (
     <>
-      <Suspense failback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route path="/" element={<HomePage />} />
@@ -22,7 +21,6 @@ export const App = () => {
             <Route path="*" element={<HomePage />} />
           </Route>
         </Routes>
-      </Suspense>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { fetchTitles } from 'api/tmdb_api';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { TrendingMovies, MovieItem, Suspense, Link } from './HomePage.styled';
+import { useLocation, Link } from 'react-router-dom';
+import { TrendingMovies, MovieItem, Suspense } from './HomePage.styled';
 
 function HomePage() {
   const [movies, setTitles] = useState([]);
@@ -21,7 +21,7 @@ function HomePage() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-        {' '}
+      {' '}
       <TrendingMovies>
         {movies.map(movie => (
           <MovieItem key={movie.id}>
