@@ -21,7 +21,6 @@ function HomePage() {
 
   return (
     <>
-    <h1>Hello</h1>
     <Suspense fallback={<div>Loading...</div>}>
       {' '}
       <TrendingMovies>

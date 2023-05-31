@@ -1,4 +1,5 @@
-import { fetchMovieDetails } from 'api/tmdb_api';
+// import { fetchMovieDetails } from 'api/tmdb_api';
+import axios from 'axios';
 import { useState, useEffect, useLocation, Suspense } from 'react';
 import { useParams, Outlet, NavLink } from 'react-router-dom';
 import {
@@ -7,22 +8,31 @@ import {
 } from './MovieDetails.styled';
 
 function MovieDetails() {
-  const [details, setDetails] = useState();
-
-  const params = useParams();
+  const [details] = useState();
+  const { movieId } = useParams();
+  const [film, setFilm] = useState(null);
+  // const params = useParams();
   const location = useLocation();
 
+  // useEffect(() => {
+  //   try {
+  //     async function fetchMvDetails() {
+  //       const result = await fetchMovieDetails(params.movieId);
+  //       setDetails(result);
+  //     }
+  //     fetchMvDetails();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [params]);
+
   useEffect(() => {
-    try {
-      async function fetchMvDetails() {
-        const result = await fetchMovieDetails(params.movieId);
-        setDetails(result);
-      }
-      fetchMvDetails();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [params]);
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=5cbdf993e68eb64b81d53ec37d948601`
+      )
+      .then(res => setFilm(res.data));
+  }, [movieId]);
 
   return (
     <>
@@ -39,8 +49,12 @@ function MovieDetails() {
         {' '}
         {details && (
           <img
-            src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}
-            alt={details.title}
+          src={`https://image.tmdb.org/t/p/original${film?.poster_path}`}
+          alt="poster"
+          width="240"
+          // <img
+          //   src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}
+          //   alt={details.title}
           />
         )}
         <MovieDetailsSubWrapper>
