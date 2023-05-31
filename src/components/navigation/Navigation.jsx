@@ -10,10 +10,10 @@ function Navigation() {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/movies">Movies</NavLink>
       </PageNav>
-      <Suspense fallback={<h1>Loading...</h1>}>
+      {/* <Suspense fallback={<h1>Loading...</h1>}> */}
         {' '}
         <Outlet />
-      </Suspense>
+      {/* //</Suspense> */}
     </>
   );
 }

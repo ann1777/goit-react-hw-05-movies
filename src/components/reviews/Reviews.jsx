@@ -17,7 +17,7 @@ function Reviews() {
   return (
     <div>
       <ul>
-      {reviews && reviews.total_results !== 0
+        {reviews && reviews.total_results !== 0
           ? reviews.results.map(review => (
               <li key={review.id}>
                 <h3>Author: {review.author}</h3>

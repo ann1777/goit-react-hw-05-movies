@@ -1,5 +1,5 @@
 import { fetchMovies } from 'api/tmdb_api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import {
   SearchButton,
@@ -73,6 +73,8 @@ function MoviePage() {
           onChange={onHandleInput}
         />
       </SearchForm>
+      <Suspense fallback={<div>Loading...</div>}>
+      {' '}
       {status === 'idle' && <div>Try to seach something!</div>}
       {status === 'rejected' && <div>Nothing found, folks!</div>}
       {status === 'loaded' && (
@@ -86,6 +88,7 @@ function MoviePage() {
           ))}
         </MoviesList>
       )}
+      </Suspense>
     </>
   );
 }

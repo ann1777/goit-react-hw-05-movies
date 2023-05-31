@@ -1,7 +1,7 @@
 import { fetchTitles } from 'api/tmdb_api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { TrendingMovies, MovieItem, Suspense } from './HomePage.styled';
+import { TrendingMovies, MovieItem } from './HomePage.styled';
 
 function HomePage() {
   const [movies, setTitles] = useState([]);
@@ -20,6 +20,8 @@ function HomePage() {
   }, []);
 
   return (
+    <>
+    <h1>Hello</h1>
     <Suspense fallback={<div>Loading...</div>}>
       {' '}
       <TrendingMovies>
@@ -32,6 +34,7 @@ function HomePage() {
         ))}
       </TrendingMovies>
     </Suspense>
+    </>
   );
 }
 export default HomePage;
