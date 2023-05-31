@@ -1,10 +1,11 @@
 import { fetchTitles } from 'api/tmdb_api';
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { TrendingMovies, MovieItem, Suspense, Link } from './HomePage.styled';
 
 function HomePage() {
   const [movies, setTitles] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchTrendingMovies() {
@@ -19,7 +20,7 @@ function HomePage() {
       <TrendingMovies>
         {movies.map(movie => (
           <MovieItem key={movie.id}>
-            <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link>
           </MovieItem>
         ))}
       </TrendingMovies>

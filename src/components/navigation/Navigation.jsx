@@ -1,8 +1,11 @@
-// import { NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Suspense from 'react';
 import { PageNav, NavLink } from './Navigation.styled';
 
 function Navigation() {
   return (
+    <>
+    {' '}
     <PageNav>
       <NavLink
         to="/"
@@ -15,6 +18,11 @@ function Navigation() {
         Movies
       </NavLink>
     </PageNav>
+    <Suspense fallback={<h1>Loading...</h1>}>
+        {' '}
+        <Outlet />
+      </Suspense>
+    </>  
   );
 }
 

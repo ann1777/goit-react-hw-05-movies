@@ -1,11 +1,13 @@
 import { fetchMovies } from 'api/tmdb_api';
 import { useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { SearchButton, SearchForm, SearchInput, MoviesList, MovieItem, MovieLink } from './MoviePage.styled';
 
 function MoviePage() {
     const [inputValue, setInputValue] = useState('');
     const [movies, setMovies] = useState([]);
     const searchQuery = inputValue.get('name') ?? '';
+    const location = useLocation();
 
     const onHandleInput = e => {
         setInputValue(e.currentTarget.value);
@@ -45,13 +47,13 @@ function MoviePage() {
         <MoviesList>
             {movies.map(movie => (
                 <MovieItem key={movie.id}>
-                    <MovieLink to={`${movie.id}`}>
+                    <MovieLink to={`${movie.id}`}
+                    state={{ from: location }}>
                         {movie.title}
                     </MovieLink>
                 </MovieItem>
             ))}
         </MoviesList>
-
         </>
     );
 }
