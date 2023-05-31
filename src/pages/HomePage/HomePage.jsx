@@ -8,19 +8,26 @@ function HomePage() {
   const location = useLocation();
 
   useEffect(() => {
-    async function fetchTrendingMovies() {
-      const result = await fetchTitles();
-      setTitles(result);
+    try {
+      async function fetchTrendingMovies() {
+        const result = await fetchTitles();
+        setTitles(result);
+      }
+      fetchTrendingMovies();
+    } catch (error) {
+      console.log(error);
     }
-    fetchTrendingMovies();
   }, []);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
+        {' '}
       <TrendingMovies>
         {movies.map(movie => (
           <MovieItem key={movie.id}>
-            <Link to={`movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link>
+            <Link to={`movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
+            </Link>
           </MovieItem>
         ))}
       </TrendingMovies>

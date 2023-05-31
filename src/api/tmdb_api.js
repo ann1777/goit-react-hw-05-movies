@@ -1,8 +1,9 @@
-export async function fetchTitles() {
-  const BASE_URL = `https://api.themoviedb.org/3`;
-  const searchParam = new URLSearchParams({
-    api_key: '5cbdf993e68eb64b81d53ec37d948601',
-  });
+const BASE_URL = `https://api.themoviedb.org/3`;
+const searchParam = new URLSearchParams({
+  api_key: '5cbdf993e68eb64b81d53ec37d948601',
+});
+
+export async function fetchTitles() { 
   try {
     const response = await fetch(
       `${BASE_URL}/trending/movie/day?${searchParam}`
@@ -17,7 +18,6 @@ export async function fetchTitles() {
 }
 
 export async function fetchMovies(searchQuery) {
-  const BASE_URL = `https://api.themoviedb.org/3`;
   const searchParam = new URLSearchParams({
     api_key: '5cbdf993e68eb64b81d53ec37d948601',
     query: searchQuery,
@@ -34,10 +34,6 @@ export async function fetchMovies(searchQuery) {
 }
 
 export async function fetchMovieDetails(movieId) {
-  const BASE_URL = `https://api.themoviedb.org/3`;
-  const searchParam = new URLSearchParams({
-    api_key: '5cbdf993e68eb64b81d53ec37d948601',
-  });
   try {
     const response = await fetch(`${BASE_URL}/movie/${movieId}?${searchParam}`);
     const parsed = await response.json();
@@ -48,10 +44,6 @@ export async function fetchMovieDetails(movieId) {
 }
 
 export async function fetchMovieCast(movieId) {
-  const BASE_URL = `https://api.themoviedb.org/3`;
-  const searchParam = new URLSearchParams({
-    api_key: '5cbdf993e68eb64b81d53ec37d948601',
-  });
   try {
     const responce = await fetch(
       `${BASE_URL}/movie/${movieId}/credits?${searchParam}`
@@ -64,10 +56,6 @@ export async function fetchMovieCast(movieId) {
 }
 
 export async function fetchMovieReviews(movieId) {
-  const BASE_URL = `https://api.themoviedb.org/3`;
-  const searchParam = new URLSearchParams({
-    api_key: '5cbdf993e68eb64b81d53ec37d948601',
-  });
   try {
     const response = await fetch(
       `${BASE_URL}/movie/${movieId}/reviews?${searchParam}`

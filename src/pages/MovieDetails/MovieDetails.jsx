@@ -1,8 +1,8 @@
 import { fetchMovieDetails } from 'api/tmdb_api';
 import { useState, useEffect, useLocation, Suspense } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, NavLink } from 'react-router-dom';
 import {
-  NavLink,
+  // NavLink,
   MovieDetailsWrapper,
   MovieDetailsSubWrapper,
 } from './MovieDetails.styled';
@@ -14,11 +14,15 @@ function MovieDetails() {
   const location = useLocation();
 
   useEffect(() => {
-    async function fetchMvDetails() {
+    try{
+      async function fetchMvDetails() {
       const result = await fetchMovieDetails(params.movieId);
       setDetails(result);
     }
     fetchMvDetails();
+    } catch (error) {
+      console.log(error);
+    }  
   }, [params]);
 
   return (
@@ -52,10 +56,10 @@ function MovieDetails() {
           <p>Additional information</p>
           <ul>
             <li>
-              <NavLink to="cast">Cast</NavLink>
+              <NavLink to="cast" state={{ from: location.state?.from }}>Cast</NavLink>
             </li>
             <li>
-              <NavLink to="Reviews">Reviews</NavLink>
+              <NavLink to="Reviews" state={{ from: location.state?.from }}>Reviews</NavLink>
             </li>
           </ul>
         </div>
