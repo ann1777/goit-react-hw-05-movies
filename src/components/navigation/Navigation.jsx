@@ -1,19 +1,19 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { PageNav, NavLink } from './Navigation.styled';
+import { PageNav, StyledLink } from './Navigation.styled';
 
 function Navigation() {
   return (
     <>
       {' '}
       <PageNav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/movies">Movies</StyledLink>
       </PageNav>
-      {/* <Suspense fallback={<h1>Loading...</h1>}> */}
+      <Suspense fallback={<h1>Loading...</h1>}>
         {' '}
         <Outlet />
-      {/* //</Suspense> */}
+      </Suspense>
     </>
   );
 }
