@@ -1,14 +1,17 @@
 // import { fetchMovieDetails } from 'api/tmdb_api';
 import axios from 'axios';
-import { useState, useEffect, useLocation, Suspense } from 'react';
-import { useParams, Outlet, NavLink } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
 import {
   MovieDetailsWrapper,
   MovieDetailsSubWrapper,
+  NavLink,
+  Outlet,
 } from './MovieDetails.styled';
 
+
 function MovieDetails() {
-  const [details] = useState();
+  // const [details] = useState();
   const { movieId } = useParams();
   const [film, setFilm] = useState(null);
   // const params = useParams();
@@ -36,7 +39,7 @@ function MovieDetails() {
 
   return (
     <>
-      <NavLink
+      {/* <NavLink
         to={
           location.state?.from
             ? `/${location.state?.from?.pathname}${location.state?.from?.search}`
@@ -44,29 +47,26 @@ function MovieDetails() {
         }
       >
         Go back
-      </NavLink>
+      </NavLink> */}
       <MovieDetailsWrapper>
         {' '}
-        {details && (
+        {film && (
           <img
           src={`https://image.tmdb.org/t/p/original${film?.poster_path}`}
           alt="poster"
           width="240"
-          // <img
-          //   src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}
-          //   alt={details.title}
           />
         )}
         <MovieDetailsSubWrapper>
           <h1>
-            {details && details.title}(
-            {details && details.release_date.slece(0, 4)})
+            {film && film.title}
+            {/* ({film && film.release_date.slece(0, 4)}) */}
           </h1>
-          <p>Userscore: {details && details.vote_average}</p>
+          <p>Userscore: {film && film.vote_average}</p>
           <h2>Overview</h2>
-          <p>{details && details.overview}</p>
+          <p>{film && film.overview}</p>
           <h3>Genres</h3>
-          <p>{details && details.genres.map(genre => genre.name).join(', ')}</p>
+          <p>{film && film.genres.map(genre => genre.name).join(', ')}</p>
         </MovieDetailsSubWrapper>
         <div>
           <p>Additional information</p>
@@ -84,7 +84,7 @@ function MovieDetails() {
           </ul>
         </div>
       </MovieDetailsWrapper>
-      <Suspense fallback={<div>Loading...</div>} e>
+      <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
     </>

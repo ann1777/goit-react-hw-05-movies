@@ -8,7 +8,7 @@ export const Outlet = styled.div`
    
 `
 
-export const NavLink = styled.link`
+export const NavLink = styled.a`
     display: inline-block;
     padding: 10px;
     /* border: 1px solid black; */

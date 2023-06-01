@@ -22,11 +22,11 @@ function MoviePage() {
     setInputValue(searchParams);
   };
 
-//   const onHandleInput = e => {
-//     e.preventdefault();
-//     setInputValue({evt: e.target.evtName.value });
-//     e.currentTarget.reset();
-//   };
+  // const onHandleInput = e => {
+  //   e.preventdefault();
+  //   setInputValue({evt: e.target.evtName.value });
+  //   e.currentTarget.reset();
+  // };
 
   useEffect(() => {
     async function fetching() {

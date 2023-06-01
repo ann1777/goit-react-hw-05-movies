@@ -18,12 +18,12 @@ export async function fetchTitles() {
 }
 
 export async function fetchMovies(searchQuery) {
-  const searchParam = new URLSearchParams({
+  const searchParam1 = new URLSearchParams({
     api_key: '5cbdf993e68eb64b81d53ec37d948601',
     query: searchQuery,
   });
   try {
-    const response = await fetch(`${BASE_URL}/search/movie?${searchParam}`);
+    const response = await fetch(`${BASE_URL}/search/movie?${searchParam1}`);
     const parsed = await response.json();
     const titles = parsed.results;
     console.log(titles);
