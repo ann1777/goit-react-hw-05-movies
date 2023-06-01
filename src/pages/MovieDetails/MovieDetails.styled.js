@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom'
 
 export const Suspense = styled.div`
     
@@ -8,7 +9,7 @@ export const Outlet = styled.div`
    
 `
 
-export const NavLink = styled.a`
+export const StyledLink = styled(NavLink)`
     display: inline-block;
     padding: 10px;
     /* border: 1px solid black; */

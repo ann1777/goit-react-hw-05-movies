@@ -18,10 +18,10 @@ function Reviews() {
     <div>
       <ul>
         {reviews && reviews.total_results !== 0
-          ? reviews.results.map(review => (
-              <li key={review.id}>
-                <h3>Author: {review.author}</h3>
-                <p>{review.content}</p>
+          ? reviews.results.map(el => (
+              <li key={el.id}>
+                <h3>Author: {el.author}</h3>
+                <p>{el.content}</p>
               </li>
             ))
           : 'No reviews founded for this movie.'}

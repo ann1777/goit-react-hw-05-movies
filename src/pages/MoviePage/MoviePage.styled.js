@@ -28,7 +28,7 @@ export const MovieItem = styled.li`
     margin-bottom: 10px;
     font-size: 20px;
 `
-export const MovieLink = styled.link`
+export const MovieLink = styled.a`
     text-decoration: none;
     color: grey;
         &.hover {

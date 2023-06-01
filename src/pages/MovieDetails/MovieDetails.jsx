@@ -1,12 +1,12 @@
 // import { fetchMovieDetails } from 'api/tmdb_api';
 import axios from 'axios';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
+
 import {
   MovieDetailsWrapper,
   MovieDetailsSubWrapper,
-  NavLink,
-  Outlet,
+  StyledLink
 } from './MovieDetails.styled';
 
 
@@ -72,14 +72,14 @@ function MovieDetails() {
           <p>Additional information</p>
           <ul>
             <li>
-              <NavLink to="cast" state={{ from: location.state?.from }}>
+              <StyledLink to="cast" state={{ from: location.state?.from }}>
                 Cast
-              </NavLink>
+              </StyledLink>
             </li>
             <li>
-              <NavLink to="Reviews" state={{ from: location.state?.from }}>
+              <StyledLink to="reviews" state={{ from: location.state?.from }}>
                 Reviews
-              </NavLink>
+              </StyledLink>
             </li>
           </ul>
         </div>
