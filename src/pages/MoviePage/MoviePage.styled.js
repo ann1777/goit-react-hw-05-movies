@@ -5,7 +5,7 @@ export const SearchForm = styled.form`
 `
 
 export const SearchButton = styled.button`
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 25%;
         &.hover {
@@ -14,7 +14,7 @@ export const SearchButton = styled.button`
 `
 export const SearchInput = styled.input`
     border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
     margin-left: 10px;
         &.hover {
             border: 1px solid black;

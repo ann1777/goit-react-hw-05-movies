@@ -30,26 +30,23 @@ function Cast() {
 
   return (
     <div>
-      <ul>
       <CastList>
         {details &&
           details.cast.map(cast => {
             <CastItem key={cast.id}>
               {cast.profile_path && (
                 <img
-                  src={`https://image.tmdb.org/t/p/original${cast.profile_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
                   alt={cast.name}
                   width="100"
                 />
               )}
               <p>{cast.name}</p>
               <p>Character: {cast.character}</p>
-            </CastItem>;
+            </CastItem>
           })}
       </CastList>
-    </ul>
-    </div>
-    
+    </div> 
   );
 }
 export default Cast;

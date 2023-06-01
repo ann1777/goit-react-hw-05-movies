@@ -4,14 +4,14 @@ import { useLocation, Link } from 'react-router-dom';
 import { TrendingMovies, MovieItem } from './HomePage.styled';
 
 function HomePage() {
-  const [movies, setTitles] = useState([]);
+  const [movies, setMovies] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
     try {
       async function fetchTrendingMovies() {
         const result = await fetchTitles();
-        setTitles(result);
+        setMovies(result);
       }
       fetchTrendingMovies();
     } catch (error) {
@@ -26,7 +26,9 @@ function HomePage() {
       <TrendingMovies>
         {movies.map(movie => (
           <MovieItem key={movie.id}>
-            <Link to={`movies/${movie.id}`} state={{ from: location }}>
+            <Link 
+            to={`movies/${movie.id}`} 
+            state={{ from: location }}>
               {movie.title}
             </Link>
           </MovieItem>

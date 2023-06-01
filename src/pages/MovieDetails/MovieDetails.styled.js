@@ -5,22 +5,22 @@ export const Suspense = styled.div`
     
 `
 
-export const Outlet = styled.div`
-   
+export const MoreInfoLinks = styled.ul`
+    list-style: none; 
 `
 
 export const StyledLink = styled(NavLink)`
     display: inline-block;
     padding: 10px;
+    margin-bottom: 5px;
     /* border: 1px solid black; */
-    background-color: rgb(235, 235, 235);
+    background-color: lightblue;
     text-decoration: none;
     border-radius: 10px;
     color: black;
-    &.visited {
-        color: black;
-        
-        &.hover {
+    &&.visited {
+        color: black;     
+        &&.hover {
             color: tomato;
         }
     }
