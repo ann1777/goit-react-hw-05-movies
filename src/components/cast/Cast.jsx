@@ -5,7 +5,7 @@ import { fetchMovieCast } from 'api/tmdb_api';
 import { CastList, CastItem } from './Cast.styled';
 
 function Cast() {
-  const [casts, setCasts] = useState();
+  const [casts, setCasts] = useState([]);
   const { movieId } = useParams();
   // const params = useParams();
 
@@ -13,8 +13,7 @@ function Cast() {
     try {
       async function fetchCasts() {
       const result = await fetchMovieCast(movieId);
-      setCasts(result);
-      console.log(result)
+      setCasts(result.cast);
     }
     fetchCasts();
     } catch (error) {
