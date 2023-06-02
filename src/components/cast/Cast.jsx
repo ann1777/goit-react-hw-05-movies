@@ -5,21 +5,23 @@ import { fetchMovieCast } from 'api/tmdb_api';
 import { CastList, CastItem } from './Cast.styled';
 
 function Cast() {
-  const [details, setDetails] = useState();
-  // const { movieId } = useParams();
-  const params = useParams();
+  const [casts, setCasts] = useState();
+  const { movieId } = useParams();
+  // const params = useParams();
 
   useEffect(() => {
     try {
-      async function fetchMovie() {
-      const result = await fetchMovieCast(params.movieId);
-      setDetails(result);
+      async function fetchCasts() {
+      const result = await fetchMovieCast(movieId);
+      setCasts(result);
+      console.log(result)
     }
-    fetchMovie();
+    fetchCasts();
     } catch (error) {
       console.log(error);
     }
-  }, [params]);
+  }, [movieId]);
+  
   // useEffect(() => {
   //   axios
   //     .get(
@@ -31,19 +33,31 @@ function Cast() {
   return (
     <div>
       <CastList>
-        {details &&
-          details.cast.map(cast => {
-            <CastItem key={cast.id}>
-              {cast.profile_path && (
+        {casts.map(cast => {
+            return (
+              <CastItem key={cast.id}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                  alt={cast.name}
+                  src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}
+                  alt={`${cast.name} portrait`}
                   width="100"
                 />
-              )}
-              <p>{cast.name}</p>
+                <div>
+                  <p>Name: {cast.name}</p>
               <p>Character: {cast.character}</p>
+                </div>
             </CastItem>
+            );          
+            // <CastItem key={cast.id}>
+            //   {cast.profile_path && (
+            //     <img
+            //       src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+            //       alt={cast.name}
+            //       width="100"
+            //     />
+            //   )}
+            //   <p>{cast.name}</p>
+            //   <p>Character: {cast.character}</p>
+            // </CastItem>
           })}
       </CastList>
     </div> 
