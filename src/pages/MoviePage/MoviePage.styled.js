@@ -5,11 +5,19 @@ export const SearchForm = styled.form`
 `
 
 export const SearchButton = styled.button`
-    padding: 15px;
-    border: none;
-    border-radius: 25%;
-        &.hover {
-            background-color: aqua;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 5px;
+    /* border: 1px solid black; */
+    background-color: lightblue;
+    text-decoration: none;
+    border-radius: 10px;
+    color: black;
+        &&.visited {
+            color: black;     
+            &&.hover {
+                color: tomato;
+            }
         }
 `
 export const SearchInput = styled.input`

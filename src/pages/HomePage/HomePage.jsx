@@ -20,22 +20,20 @@ function HomePage() {
   }, []);
 
   return (
-    <>
-    <Suspense fallback={<div>Loading...</div>}>
-      {' '}
-      <TrendingMovies>
-        {movies.map(movie => (
-          <MovieItem key={movie.id}>
-            <Link 
-            to={`movies/${movie.id}`} 
-            state={{ from: location }}>
-              {movie.title}
-            </Link>
-          </MovieItem>
-        ))}
-      </TrendingMovies>
-    </Suspense>
-    </>
+  
+      <Suspense fallback={<div>Loading...</div>}>
+        {' '}
+        <TrendingMovies>
+          {movies.map(movie => (
+            <MovieItem key={movie.id}>
+              <Link to={`movies/${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
+            </MovieItem>
+          ))}
+        </TrendingMovies>
+      </Suspense>
+ 
   );
 }
 export default HomePage;

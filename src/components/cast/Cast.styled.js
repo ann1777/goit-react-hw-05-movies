@@ -7,6 +7,6 @@ export const CastList = styled.ul`
 `
 
 export const CastItem= styled.li`
-    width: calc((100vw - 5 * 15px) / 6);
+    width: calc((100vw - 5 * 15px) / 10);
     text-align: center;
 `
