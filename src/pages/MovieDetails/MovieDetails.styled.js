@@ -18,6 +18,23 @@ export const StyledLink = styled(NavLink)`
     text-decoration: none;
     border-radius: 10px;
     color: black;
+        &&.visited {
+            color: black;     
+            &&.hover {
+                color: tomato;
+            }
+        }
+`
+
+export const StyledButton = styled.button`
+display: inline-block;
+padding: 10px;
+margin-bottom: 5px;
+/* border: 1px solid black; */
+background-color: lightblue;
+text-decoration: none;
+border-radius: 10px;
+color: black;
     &&.visited {
         color: black;     
         &&.hover {

@@ -7,6 +7,7 @@ import {
   MovieDetailsWrapper,
   MovieDetailsSubWrapper,
   StyledLink,
+  StyledButton,
   MoreInfoLinks
 } from './MovieDetails.styled';
 
@@ -16,6 +17,7 @@ function MovieDetails() {
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
     try {
@@ -39,16 +41,11 @@ function MovieDetails() {
 
   return (
     <>
-      <StyledLink
-        // to={
-        //   location.state?.from
-        //     ? `/${location.state?.from?.pathname}${location.state?.from?.search}`
-        //     : '/movies'
-        // }
-        onClick={(() => navigate(location.state?.from ?? '/'))}
+      <StyledButton
+        type="button" onClick={() => navigate(backLink)}
       >       
         Go back
-      </StyledLink>
+      </StyledButton>
       <MovieDetailsWrapper>
         {' '}
         {details && (
