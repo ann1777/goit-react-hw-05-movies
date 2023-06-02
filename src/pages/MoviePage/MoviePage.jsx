@@ -11,16 +11,12 @@ import {
 } from './MoviePage.styled';
 
 function MoviePage() {
-  const [inputValue, setInputValue] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+  const [inputValue, setInputValue] = useState('');
   const [status, setStatus] = useState('idle');
-  const searchQuery = inputValue.get('name') ?? '';
+  const searchQuery = searchParams.get('q') ?? '';
   const location = useLocation();
-
-  const onHandleInput = name => {
-    const searchParams = name !== '' ? { name } : {};
-    setInputValue(searchParams);
-  };
 
   useEffect(() => {
     async function fetching() {
@@ -37,31 +33,30 @@ function MoviePage() {
     fetching();
   }, [searchQuery]);
 
-  const onHandleSubmit = async e => {
-    e.preventdefault();
-    try {
-      if (!e.currentTarget.search.value.trim()) {
-        throw new Error('Empty string is not allowed!');
-      }
-      const result = await fetchMovies(searchQuery.trim(''));
-      onHandleInput(e.currentTarget.search.value);
-      setMovies(result);
-      setInputValue('');
-    } catch (error) {
-      console.log(error);
+  const onHandleChange = ({target}) => {
+    setInputValue(target.value);
+  }
+
+  const onHandleSubmit = e => {
+    e.preventDefault();
+    console.log(inputValue);
+    setSearchParams(inputValue ? {
+      q: inputValue,
     }
+    : {})
+
   };
 
   return (
     <>
-      <SearchForm onSubmit={onHandleSubmit}>
+      <SearchForm  onSubmit={onHandleSubmit}>
         <SearchInput
           type="text"
-          name="search"
           autoComplete="off"
           autoFocus
+          value={inputValue}
           placeholder="Input search query"
-          onChange={onHandleInput}
+          onChange={onHandleChange}
         />
         <SearchButton type="submit">
           <span>Search</span>
