@@ -8,6 +8,7 @@ export const SearchForm = styled.form`
 export const SearchButton = styled.button`
     display: inline-block;
     padding: 10px;
+    margin-left: 10px;
     margin-bottom: 5px;
     /* border: 1px solid black; */
     background-color: lightblue;
