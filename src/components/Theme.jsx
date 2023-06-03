@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const AppBox = styled.div`
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 20px auto;
 `
 

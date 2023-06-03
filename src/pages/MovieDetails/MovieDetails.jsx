@@ -13,7 +13,7 @@ import {
 
 
 function MovieDetails() {
-  const [details, setDetails] = useState();
+  const [details, setDetails] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,7 +50,7 @@ function MovieDetails() {
         {' '}
         {details && (
           <img
-          src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
           alt="poster"
           />
         )}
@@ -65,8 +65,8 @@ function MovieDetails() {
           <h3>Genres</h3>
           <p>{details && details.genres.map(genre => genre.name).join(', ')}</p>
         </MovieDetailsSubWrapper>
-        <div>
-          <p>Additional information</p>
+        <MovieDetailsSubWrapper>
+          <h3>See more</h3>
           <MoreInfoLinks>
             <li>
               <StyledLink to="cast" state={{ from: location.state?.from }}>
@@ -79,7 +79,7 @@ function MovieDetails() {
               </StyledLink>
             </li>
           </MoreInfoLinks>
-        </div>
+        </MovieDetailsSubWrapper>
       </MovieDetailsWrapper>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />

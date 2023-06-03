@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const SearchForm = styled.form`
@@ -36,7 +37,7 @@ export const MovieItem = styled.li`
     margin-bottom: 10px;
     font-size: 20px;
 `
-export const MovieLink = styled.a`
+export const MovieLink = styled(NavLink)`
     text-decoration: none;
     color: grey;
         &.hover {

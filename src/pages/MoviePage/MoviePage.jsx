@@ -71,7 +71,7 @@ function MoviePage() {
           {movies.map(movie => (
             <MovieItem key={movie.id}>
               <MovieLink 
-              to={`${movie.id}`} 
+              to={`/movies/${movie.id.toString()}`} 
               state={{ from: location }}>
                 {movie.title}
               </MovieLink>
