@@ -1,4 +1,4 @@
-import { HomePage} from 'components/HomePage/HomePage';
+import { HomePage} from 'pages/HomePage/HomePage';
 import { AppBox } from 'components/Common/Theme';
 
 export const Layout = () => {

@@ -52,7 +52,6 @@ function MovieDetails() {
           <img
           src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}
           alt="poster"
-          width="240"
           />
         )}
         <MovieDetailsSubWrapper>
